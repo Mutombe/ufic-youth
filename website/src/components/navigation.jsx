@@ -7,9 +7,7 @@ import { CgMenuGridO } from "react-icons/cg";
 import { GiWireframeGlobe } from "react-icons/gi";
 import { FaGlobeAfrica } from "react-icons/fa";
 import { FcLink } from "react-icons/fc";
-import SearchModal from './../searchModal';
-
-
+import SearchModal from "./../searchModal";
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -30,12 +28,12 @@ const Navigation = () => {
   // Prevent body scroll when mobile menu is open
   useEffect(() => {
     if (isMobileMenuOpen) {
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = "unset";
     }
     return () => {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = "unset";
     };
   }, [isMobileMenuOpen]);
 
@@ -67,14 +65,17 @@ const Navigation = () => {
         transition={{ duration: 0.6, ease: "easeOut" }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           isScrolled
-            ? "bg-purple-950/80 backdrop-blur-xl shadow-2xl shadow-purple-900/50"
-            : "bg-gradient-to-b from-purple-950/90 to-transparent backdrop-blur-sm"
+            ? "bg-purple-950/95 backdrop-blur-xl shadow-2xl shadow-purple-900/50"
+            : "bg-transparent"
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
-            <Link to="/" className="flex items-center space-x-3 group relative z-50">
+            <Link
+              to="/"
+              className="flex items-center space-x-3 group relative z-50"
+            >
               <motion.div
                 whileHover={{ scale: 1.05, rotate: 5 }}
                 transition={{ type: "spring", stiffness: 300 }}
@@ -274,7 +275,7 @@ const Navigation = () => {
                     >
                       {/* Background effect */}
                       <div className="absolute inset-0 bg-gradient-to-r from-amber-500/0 via-amber-500/10 to-amber-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                      
+
                       {/* Active indicator */}
                       {location.pathname === link.path && (
                         <motion.div
@@ -287,17 +288,20 @@ const Navigation = () => {
                           }}
                         />
                       )}
-                      
+
                       <span className="relative z-10">{link.label}</span>
-                      
+
                       {/* Arrow Icon */}
                       <motion.span
                         className="relative z-10 text-2xl"
-                        animate={{ x: location.pathname === link.path ? [0, 5, 0] : 0 }}
-                        transition={{ 
-                          duration: 1.5, 
-                          repeat: location.pathname === link.path ? Infinity : 0,
-                          ease: "easeInOut" 
+                        animate={{
+                          x: location.pathname === link.path ? [0, 5, 0] : 0,
+                        }}
+                        transition={{
+                          duration: 1.5,
+                          repeat:
+                            location.pathname === link.path ? Infinity : 0,
+                          ease: "easeInOut",
                         }}
                       >
                         <FcLink />

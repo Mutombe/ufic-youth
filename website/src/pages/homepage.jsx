@@ -304,9 +304,14 @@ const Home = () => {
           </div>
         </motion.div>
       </motion.section>
+              
+      <section className="relative bg-gradient-to-r from-purple-950 via-amber-900 to-purple-950 py-8 overflow-hidden">
+        {/* Seamless Gradient Overlay - Top (matching website BG) */}
+        <div className="absolute top-0 left-0 right-0 h-40 bg-gradient-to-b from-purple-950 via-purple-900 to-transparent pointer-events-none z-[1]" />
+        
+        {/* Seamless Gradient Overlay - Bottom (matching website BG) */}
+        <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-purple-900 via-purple-900/70 to-transparent pointer-events-none z-[1]" />
 
-      {/* Horizontal Flowing Events Strip */}
-      <section className="relative bg-gradient-to-r from-purple-950 via-amber-900 to-purple-950 py-8 overflow-hidden border-y border-amber-400/20">
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-5">
           <div
@@ -419,7 +424,7 @@ const Home = () => {
                           y: -8,
                           boxShadow: "0 20px 40px rgba(251, 191, 36, 0.3)",
                         }}
-                        className="relative w-72 h-40 rounded-2xl overflow-hidden group cursor-pointer flex-shrink-0 border border-amber-400/30 shadow-2xl"
+                        className="relative w-72 h-40 rounded-2xl overflow-hidden group cursor-pointer flex-shrink-0 shadow-2xl"
                       >
                         {/* Background Image */}
                         <img
@@ -476,9 +481,9 @@ const Home = () => {
               ))}
             </motion.div>
 
-            {/* Gradient Fades on Edges */}
-            <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-purple-950 to-transparent pointer-events-none z-10" />
-            <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-purple-950 to-transparent pointer-events-none z-10" />
+            {/* Gradient Fades on Left/Right Edges */}
+            <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-purple-950 via-purple-950/50 to-transparent pointer-events-none z-10" />
+            <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-purple-950 via-purple-950/50 to-transparent pointer-events-none z-10" />
           </div>
 
           {/* Bottom CTA */}

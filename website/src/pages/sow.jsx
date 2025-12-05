@@ -35,11 +35,10 @@ const Sow = () => {
 
   return (
     <div className="min-h-screen pt-20">
-      {/* Hero Section */}
-      {/* Hero Section */}
-      <section className="relative py-32 px-4 sm:px-6 lg:px-8 overflow-hidden">
-        {/* Background Image */}
-        <div className="absolute inset-0">
+{/* Hero Section */}
+      <section className="relative pt-32 pb-24 px-4 sm:px-6 lg:px-8 overflow-hidden -mt-20">
+        {/* Background Image - extends behind nav */}
+        <div className="absolute inset-0 -top-20">
           <img
             src="https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?w=1920&h=1080&fit=crop"
             alt="Giving"
@@ -47,8 +46,8 @@ const Sow = () => {
           />
         </div>
         
-        {/* Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-purple-950/90 via-purple-900/85 to-amber-900/90" />
+        {/* Light Gradient Overlay - just for readability */}
+        <div className="absolute inset-0 -top-32 bg-gradient-to-br from-purple-950/90 via-purple-900/85 to-amber-900/90" />
         
         {/* Animated Background Elements */}
         <motion.div
