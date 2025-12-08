@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Heart, Sparkles, Zap, Gift, CreditCard, Building, Smartphone } from 'lucide-react';
+import { Heart, Sparkles, Zap, Gift, CreditCard, Building, Smartphone, BookOpen, Globe } from 'lucide-react';
 import { toast } from 'sonner';
 import { useLanguage } from '../LunguageContext';
 import { GiGiftOfKnowledge } from "react-icons/gi";
@@ -9,6 +9,10 @@ import { CiCreditCard1 } from "react-icons/ci";
 import { GiSmartphone } from "react-icons/gi";
 import { TiHeartOutline } from "react-icons/ti";
 import LazyImage from '../utils/imageLoader.jsx';
+import { GiBookmarklet } from "react-icons/gi";
+import { GiWireframeGlobe } from "react-icons/gi";
+import { HiOutlineBuildingOffice2 } from "react-icons/hi2";
+
 
 const Sow = () => {
   const { t } = useLanguage();
@@ -108,21 +112,21 @@ const Sow = () => {
           className="bg-gradient-to-br from-purple-900/50 to-purple-950/50 backdrop-blur-2xl rounded-3xl border border-purple-700/30 shadow-2xl overflow-hidden"
         >
           {/* Frequency Toggle */}
-          <div className="p-8 border-b border-purple-700/30">
-            <div className="flex items-center justify-center gap-4">
+          <div className="p-4 sm:p-8 border-b border-purple-700/30">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => setFrequency('once')}
-                className={`px-8 py-4 rounded-2xl font-bold transition-all duration-300 ${
+                className={`w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 rounded-2xl font-bold text-sm sm:text-base transition-all duration-300 ${
                   frequency === 'once'
                     ? 'bg-gradient-to-r from-amber-500 to-amber-600 text-purple-950 shadow-xl shadow-amber-500/50'
                     : 'bg-purple-800/50 text-purple-300 hover:bg-purple-800/70'
                 }`}
               >
-                <div className="flex items-center gap-2">
-                  <Gift className="w-5 h-5" />
-                  One-Time Seed
+                <div className="flex items-center justify-center gap-2">
+                  <Gift className="w-4 h-4 sm:w-5 sm:h-5" />
+                  <span className="whitespace-nowrap">One-Time Seed</span>
                 </div>
               </motion.button>
 
@@ -130,27 +134,27 @@ const Sow = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => setFrequency('monthly')}
-                className={`px-8 py-4 rounded-2xl font-bold transition-all duration-300 ${
+                className={`w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 rounded-2xl font-bold text-sm sm:text-base transition-all duration-300 ${
                   frequency === 'monthly'
                     ? 'bg-gradient-to-r from-amber-500 to-amber-600 text-purple-950 shadow-xl shadow-amber-500/50'
                     : 'bg-purple-800/50 text-purple-300 hover:bg-purple-800/70'
                 }`}
               >
-                <div className="flex items-center gap-2">
-                  <Zap className="w-5 h-5" />
-                  Monthly Partnership
+                <div className="flex items-center justify-center gap-2">
+                  <Zap className="w-4 h-4 sm:w-5 sm:h-5" />
+                  <span className="whitespace-nowrap">Monthly Partnership</span>
                 </div>
               </motion.button>
             </div>
           </div>
 
           {/* Amount Selection */}
-          <div className="p-8">
-            <h3 className="text-2xl font-bold text-white mb-6 text-center">
+          <div className="p-4 sm:p-8">
+            <h3 className="text-xl sm:text-2xl font-bold text-white mb-4 sm:mb-6 text-center">
               Select Amount
             </h3>
 
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-8">
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4 mb-6 sm:mb-8">
               {suggestedAmounts.map((amount, index) => (
                 <motion.button
                   key={amount}
@@ -163,7 +167,7 @@ const Sow = () => {
                     setSelectedAmount(amount);
                     setCustomAmount('');
                   }}
-                  className={`p-6 rounded-2xl font-bold text-2xl transition-all duration-300 ${
+                  className={`p-4 sm:p-6 rounded-xl sm:rounded-2xl font-bold text-xl sm:text-2xl transition-all duration-300 ${
                     selectedAmount === amount
                       ? 'bg-gradient-to-br from-amber-500 to-amber-600 text-purple-950 shadow-xl shadow-amber-500/50'
                       : 'bg-purple-800/50 text-purple-200 hover:bg-purple-800/70 border border-purple-700/30'
@@ -175,12 +179,12 @@ const Sow = () => {
             </div>
 
             {/* Custom Amount */}
-            <div className="mb-8">
-              <label className="block text-purple-300 text-sm font-medium mb-2">
+            <div className="mb-6 sm:mb-8">
+              <label className="block text-purple-300 text-xs sm:text-sm font-medium mb-2">
                 Or Enter Custom Amount
               </label>
               <div className="relative">
-                <span className="absolute left-4 top-1/2 transform -translate-y-1/2 text-amber-400 text-2xl font-bold">
+                <span className="absolute left-3 sm:left-4 top-1/2 transform -translate-y-1/2 text-amber-400 text-xl sm:text-2xl font-bold">
                   $
                 </span>
                 <input
@@ -191,29 +195,29 @@ const Sow = () => {
                     setSelectedAmount(null);
                   }}
                   placeholder="0.00"
-                  className="w-full pl-12 pr-4 py-4 bg-purple-800/50 border border-purple-700/30 rounded-2xl text-white text-2xl font-bold focus:outline-none focus:ring-2 focus:ring-amber-400 focus:border-transparent transition-all"
+                  className="w-full pl-10 sm:pl-12 pr-4 py-3 sm:py-4 bg-purple-800/50 border border-purple-700/30 rounded-xl sm:rounded-2xl text-white text-xl sm:text-2xl font-bold focus:outline-none focus:ring-2 focus:ring-amber-400 focus:border-transparent transition-all"
                 />
               </div>
             </div>
 
             {/* Payment Method */}
-            <div className="mb-8">
-              <h3 className="text-xl font-bold text-white mb-4">Payment Method</h3>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div className="mb-6 sm:mb-8">
+              <h3 className="text-lg sm:text-xl font-bold text-white mb-3 sm:mb-4">Payment Method</h3>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
                 {paymentMethods.map((method) => (
                   <motion.button
                     key={method.id}
                     whileHover={{ scale: 1.03 }}
                     whileTap={{ scale: 0.97 }}
                     onClick={() => setPaymentMethod(method.id)}
-                    className={`p-4 rounded-2xl transition-all duration-300 ${
+                    className={`p-3 sm:p-4 rounded-xl sm:rounded-2xl transition-all duration-300 ${
                       paymentMethod === method.id
                         ? 'bg-gradient-to-br from-amber-500 to-amber-600 text-purple-950 shadow-xl shadow-amber-500/30'
                         : 'bg-purple-800/50 text-purple-200 hover:bg-purple-800/70 border border-purple-700/30'
                     }`}
                   >
-                    <method.icon className="w-8 h-8 mx-auto mb-2" />
-                    <div className="text-sm font-medium">{method.name}</div>
+                    <method.icon className="w-6 h-6 sm:w-8 sm:h-8 mx-auto mb-2" />
+                    <div className="text-xs sm:text-sm font-medium">{method.name}</div>
                   </motion.button>
                 ))}
               </div>
@@ -224,12 +228,11 @@ const Sow = () => {
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               onClick={handleSow}
-              className="w-full py-5 bg-gradient-to-r from-amber-500 to-amber-600 text-purple-950 font-black text-xl rounded-2xl shadow-2xl shadow-amber-500/50 hover:shadow-amber-500/80 transition-all duration-300 flex items-center justify-center gap-3 group"
+              className="w-full py-4 sm:py-5 bg-gradient-to-r from-amber-500 to-amber-600 text-purple-950 font-black text-lg sm:text-xl rounded-xl sm:rounded-2xl shadow-2xl shadow-amber-500/50 hover:shadow-amber-500/80 transition-all duration-300 flex items-center justify-center gap-2 sm:gap-3 group"
             >
-              <TiHeartOutline className="w-6 h-6 group-hover:scale-110 transition-transform" />
-              Sow ${selectedAmount || customAmount || '0'}
-              {frequency === 'monthly' && '/month'}
-              <GiGiftOfKnowledge className="w-6 h-6 group-hover:scale-110 transition-transform" />
+              <TiHeartOutline className="w-5 h-5 sm:w-6 sm:h-6 group-hover:scale-110 transition-transform" />
+              <span className="truncate">Sow ${selectedAmount || customAmount || '0'}{frequency === 'monthly' && '/mo'}</span>
+              <GiGiftOfKnowledge className="w-5 h-5 sm:w-6 sm:h-6 group-hover:scale-110 transition-transform" />
             </motion.button>
           </div>
         </motion.div>
@@ -254,19 +257,19 @@ const Sow = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {[
             {
-              icon: '🏗️',
+              icon: HiOutlineBuildingOffice2,
               title: 'Building Projects',
               description: 'Support construction of churches and community centers',
               color: 'from-blue-600 to-blue-800',
             },
             {
-              icon: '📖',
+              icon: GiBookmarklet,
               title: 'Youth Programs',
               description: 'Empower the next generation with spiritual education',
               color: 'from-purple-600 to-purple-800',
             },
             {
-              icon: '🌍',
+              icon: GiWireframeGlobe,
               title: 'Global Missions',
               description: 'Reach nations with the gospel message',
               color: 'from-amber-600 to-amber-800',
@@ -284,9 +287,9 @@ const Sow = () => {
               <motion.div
                 animate={{ rotate: [0, 5, 0] }}
                 transition={{ duration: 3, repeat: Infinity }}
-                className="text-6xl mb-4"
+                className="mb-4"
               >
-                {item.icon}
+                <item.icon className="w-12 h-12 sm:w-16 sm:h-16 text-white" />
               </motion.div>
               <h3 className="text-white text-2xl font-bold mb-3">
                 {item.title}
