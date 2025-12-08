@@ -4,6 +4,7 @@ import { Heart, Star, ChevronRight, X } from 'lucide-react';
 import { useLanguage } from '../LunguageContext';
 import { MdStarPurple500 } from "react-icons/md";
 import { TiHeartOutline } from "react-icons/ti";
+import LazyImage from '../utils/imageLoader.jsx';
 const Stories = () => {
   const { t } = useLanguage();
   const [selectedStory, setSelectedStory] = useState(null);
@@ -15,7 +16,7 @@ const Stories = () => {
       title: 'Overcoming Barrenness Through Faith',
       excerpt: 'After years of waiting, God blessed us with the miracle we had been praying for...',
       story: 'After years of struggling with barrenness, my husband and I had almost lost hope. Through the teachings at UFIC Youth and the prayers of the community, we held onto faith. Today, we are blessed with two beautiful children. God is faithful!',
-      image: 'https://images.unsplash.com/photo-1438032005730-c779502df39b?w=600',
+      image: '/36.jpg',
       category: 'Healing',
       likes: 234,
     },
@@ -25,7 +26,7 @@ const Stories = () => {
       title: 'From Addiction to Freedom',
       excerpt: 'The power of God broke every chain that held me captive...',
       story: 'I was bound by addiction for over 10 years. The youth ministry reached out to me when I was at my lowest. Through consistent prayer, mentorship, and God\'s transforming power, I am now completely free and serving in ministry.',
-      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600',
+      image: '/28.jpg',
       category: 'Deliverance',
       likes: 189,
     },
@@ -35,7 +36,7 @@ const Stories = () => {
       title: 'Finding Purpose in Youth Ministry',
       excerpt: 'I discovered my calling and purpose through this community...',
       story: 'As a young person, I felt lost and without direction. UFIC Youth helped me discover my spiritual gifts and calling. Now I lead a life group and mentor other young people finding their way.',
-      image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600',
+      image: '/26.jpg',
       category: 'Purpose',
       likes: 156,
     },
@@ -45,7 +46,7 @@ const Stories = () => {
       title: 'Financial Breakthrough',
       excerpt: 'God opened doors I never thought possible...',
       story: 'Unemployment had me feeling hopeless. After joining the morning devotions and faithfully sowing into the Kingdom, God opened incredible doors. I now run my own successful business and employ others.',
-      image: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=600',
+      image: '/25.jpg',
       category: 'Breakthrough',
       likes: 267,
     },
@@ -55,7 +56,7 @@ const Stories = () => {
       title: 'Saved from Depression',
       excerpt: 'Light broke through my darkest moments...',
       story: 'I battled severe depression and contemplated ending it all. The youth community showed me unconditional love and support. Through prayer and fellowship, God restored my joy and gave me a reason to live.',
-      image: 'https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=600',
+      image: '/24.jpg',
       category: 'Healing',
       likes: 198,
     },
@@ -65,7 +66,7 @@ const Stories = () => {
       title: 'Academic Excellence',
       excerpt: 'God gave me wisdom beyond my years...',
       story: 'Struggling academically and facing failure, I joined the prayer groups. God gave me supernatural wisdom and understanding. I graduated with honors and now mentor students.',
-      image: 'https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=600',
+      image: '/29.jpg',
       category: 'Breakthrough',
       likes: 145,
     },
@@ -77,11 +78,7 @@ const Stories = () => {
       <section className="relative py-32 px-4 sm:px-6 lg:px-8 overflow-hidden -mt-20">
         {/* Background Image */}
         <div className="absolute inset-0 -top-20">
-          <img
-            src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=1920&h=1080&fit=crop"
-            alt="Testimonies"
-            className="w-full h-full object-cover"
-          />
+          <LazyImage src="/8.avif" alt="Testimonies" className="w-full h-full object-cover" />
         </div>
         
         {/* Gradient Overlay */}

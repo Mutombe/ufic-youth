@@ -8,6 +8,7 @@ import { BsBank } from "react-icons/bs";
 import { CiCreditCard1 } from "react-icons/ci";
 import { GiSmartphone } from "react-icons/gi";
 import { TiHeartOutline } from "react-icons/ti";
+import LazyImage from '../utils/imageLoader.jsx';
 
 const Sow = () => {
   const { t } = useLanguage();
@@ -39,11 +40,7 @@ const Sow = () => {
       <section className="relative pt-32 pb-24 px-4 sm:px-6 lg:px-8 overflow-hidden -mt-20">
         {/* Background Image - extends behind nav */}
         <div className="absolute inset-0 -top-20">
-          <img
-            src="https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?w=1920&h=1080&fit=crop"
-            alt="Giving"
-            className="w-full h-full object-cover"
-          />
+          <LazyImage src="https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?w=1920&h=1080&fit=crop" alt="Giving" className="w-full h-full object-cover" />
         </div>
         
         {/* Light Gradient Overlay - just for readability */}

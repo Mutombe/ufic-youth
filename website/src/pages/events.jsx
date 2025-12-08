@@ -12,6 +12,8 @@ import { IoCalendarOutline } from "react-icons/io5";
 import { LiaPeopleCarrySolid } from "react-icons/lia";
 import { CgSandClock } from "react-icons/cg";
 import { TiHeartOutline } from "react-icons/ti";
+import LazyImage from '../utils/imageLoader.jsx';
+
 const Events = () => {
   const { t } = useLanguage();
   const [selectedCategory, setSelectedCategory] = useState('all');
@@ -157,11 +159,7 @@ const Events = () => {
       <section className="relative py-32 px-4 sm:px-6 lg:px-8 overflow-hidden -mt-20">
         {/* Background Image */}
         <div className="absolute inset-0 -top-20">
-          <img
-            src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1920&h=1080&fit=crop"
-            alt="Events"
-            className="w-full h-full object-cover"
-          />
+          <LazyImage src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1920&h=1080&fit=crop" alt="Events" className="w-full h-full object-cover" />
         </div>
         
         {/* Gradient Overlay */}

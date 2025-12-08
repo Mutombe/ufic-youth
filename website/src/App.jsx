@@ -112,6 +112,7 @@ const LoadingScreen = () => {
   );
 };
 
+
 const PageWrapper = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [isInitialLoad, setIsInitialLoad] = useState(true);

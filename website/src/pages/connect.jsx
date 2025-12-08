@@ -8,6 +8,7 @@ import { TiLocation } from "react-icons/ti";
 import { IoPhonePortrait } from "react-icons/io5";
 import { HiPaperAirplane } from "react-icons/hi";
 import { BiSolidMessageRoundedDetail } from "react-icons/bi";
+import LazyImage from "../utils/imageLoader.jsx";
 
 
 const Connect = () => {
@@ -44,11 +45,7 @@ const Connect = () => {
       <section className="relative py-32 px-4 sm:px-6 lg:px-8 overflow-hidden -mt-20">
         {/* Background Image */}
         <div className="absolute inset-0 -top-20">
-          <img
-            src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=1920&h=1080&fit=crop"
-            alt="Community"
-            className="w-full h-full object-cover"
-          />
+          <LazyImage src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=1920&h=1080&fit=crop" alt="Community" className="w-full h-full object-cover" />
         </div>
         
         {/* Gradient Overlay */}

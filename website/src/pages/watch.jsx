@@ -2,10 +2,24 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Play, Clock, Eye, Calendar, Filter } from "lucide-react";
 import { useLanguage } from "../LunguageContext";
+import LazyImage from '../utils/imageLoader.jsx';
 
 const Watch = () => {
   const { t } = useLanguage();
   const [selectedCategory, setSelectedCategory] = useState("all");
+
+  // Logo Components
+  const YouTubeLogo = () => (
+    <svg viewBox="0 0 24 24" className="w-6 h-6" fill="currentColor">
+      <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+    </svg>
+  );
+
+  const FacebookLogo = () => (
+    <svg viewBox="0 0 24 24" className="w-6 h-6" fill="currentColor">
+      <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+    </svg>
+  );
 
   const categories = [
     { id: "all", name: "All Services" },
@@ -21,8 +35,10 @@ const Watch = () => {
       duration: "1:56:16",
       views: "15.2K",
       thumbnail:
-        "https://images.unsplash.com/photo-1438232992991-995b7058bbb3?w=600",
+        "/2.jpg",
       category: "sunday",
+      source: "youtube",
+      theme: "from-red-600 to-red-700",
     },
     {
       title: "Your Personal Ministry 5 | Submission",
@@ -30,8 +46,10 @@ const Watch = () => {
       duration: "2:46:53",
       views: "12.8K",
       thumbnail:
-        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600",
+        "/2.jpg",
       category: "ministry",
+      source: "facebook",
+      theme: "from-blue-600 to-blue-700",
     },
     {
       title: "Your Personal Ministry 4 | Your Personal Constitution",
@@ -39,8 +57,10 @@ const Watch = () => {
       duration: "3:25:47",
       views: "10.5K",
       thumbnail:
-        "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=600",
+        "/2.jpg",
       category: "ministry",
+      source: "youtube",
+      theme: "from-red-600 to-red-700",
     },
     {
       title: "The Strange Glory of God",
@@ -48,8 +68,10 @@ const Watch = () => {
       duration: "1:33:32",
       views: "18.3K",
       thumbnail:
-        "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600",
+        "/2.jpg",
       category: "special",
+      source: "facebook",
+      theme: "from-blue-600 to-blue-700",
     },
     {
       title: "Talitha Cumi",
@@ -57,8 +79,10 @@ const Watch = () => {
       duration: "1:47:54",
       views: "14.1K",
       thumbnail:
-        "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=600",
+        "/2.jpg",
       category: "special",
+      source: "youtube",
+      theme: "from-red-600 to-red-700",
     },
     {
       title: "Your Personal Ministry 3 | Q&A",
@@ -66,8 +90,10 @@ const Watch = () => {
       duration: "3:09:37",
       views: "9.2K",
       thumbnail:
-        "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=600",
+        "/2.jpg",
       category: "ministry",
+      source: "facebook",
+      theme: "from-blue-600 to-blue-700",
     },
   ];
 
@@ -82,11 +108,7 @@ const Watch = () => {
       <section className="relative py-32 px-4 sm:px-6 lg:px-8 overflow-hidden -mt-20">
         {/* Background Image */}
         <div className="absolute inset-0 -top-20">
-          <img
-            src="https://images.unsplash.com/photo-1510915361894-db8b60106cb1?w=1920&h=1080&fit=crop"
-            alt="Worship"
-            className="w-full h-full object-cover"
-          />
+          <LazyImage src="https://images.unsplash.com/photo-1510915361894-db8b60106cb1?w=1920&h=1080&fit=crop" alt="Worship" className="w-full h-full object-cover" />
         </div>
 
         {/* Gradient Overlay */}
@@ -173,17 +195,25 @@ const Watch = () => {
                     transition={{ duration: 0.6 }}
                     src={video.thumbnail}
                     alt={video.title}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover absolute inset-0"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-purple-950 via-purple-950/50 to-transparent" />
+                  {/* Stronger overlay for readability */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-purple-950/95 via-purple-950/60 to-purple-950/20" />
+
+                  {/* Source Logo Badge */}
+                  <div className={`absolute top-3 left-3 px-3 py-2 bg-gradient-to-r ${video.theme} rounded-lg flex items-center gap-2 shadow-lg`}>
+                    <div className="text-white">
+                      {video.source === "youtube" ? <YouTubeLogo /> : <FacebookLogo />}
+                    </div>
+                  </div>
 
                   {/* Play Button Overlay */}
                   <motion.div
                     whileHover={{ scale: 1.1 }}
                     className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
                   >
-                    <div className="w-16 h-16 bg-amber-500 rounded-full flex items-center justify-center shadow-2xl">
-                      <Play className="w-8 h-8 text-purple-950 ml-1" />
+                    <div className={`w-16 h-16 bg-gradient-to-br ${video.theme} rounded-full flex items-center justify-center shadow-2xl`}>
+                      <Play className="w-8 h-8 text-white ml-1" />
                     </div>
                   </motion.div>
 
@@ -196,8 +226,8 @@ const Watch = () => {
                   </div>
                 </div>
 
-                {/* Content */}
-                <div className="p-6">
+                {/* Content with overlay background */}
+                <div className="p-6 bg-gradient-to-b from-purple-950/80 to-purple-950/95 backdrop-blur-sm">
                   <h3 className="text-white font-bold text-lg mb-3 group-hover:text-amber-400 transition-colors line-clamp-2">
                     {video.title}
                   </h3>

@@ -17,6 +17,7 @@ import { useLanguage } from "../LunguageContext";
 import { LiaPeopleCarrySolid } from "react-icons/lia";
 import { TiHeartOutline } from "react-icons/ti";
 import { IoCalendarOutline } from "react-icons/io5";
+import LazyImage from "../utils/imageLoader.jsx";
 
 // Scrolling Column Component
 const ScrollingColumn = ({ images, direction, delay = 0 }) => {
@@ -51,7 +52,7 @@ const ScrollingColumn = ({ images, direction, delay = 0 }) => {
             key={index}
             className="relative w-full h-80 rounded-xl overflow-hidden flex-shrink-0"
           >
-            <img src={img} alt="" className="w-full h-full object-cover" />
+            <LazyImage src={img} alt="" priority={true} className="w-full h-full object-cover" />
             <div className="absolute inset-0 bg-gradient-to-t from-purple-950/50 to-transparent" />
           </div>
         ))}
@@ -60,7 +61,8 @@ const ScrollingColumn = ({ images, direction, delay = 0 }) => {
       <style jsx>{`
         .pause-animation {
           animation-play-state: paused !important;
-        }
+        }import LazyImage from './../utils/imageLoader';
+
       `}</style>
     </div>
   );
@@ -72,26 +74,26 @@ const Home = () => {
 
   // Hero background images for scrolling columns
   const column1Images = [
-    "https://images.unsplash.com/photo-1438032005730-c779502df39b?w=400&h=600&fit=crop",
+    "/1.jpg",
     "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=400&h=600&fit=crop",
-    "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=400&h=600&fit=crop",
-    "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=600&fit=crop",
-    "https://images.unsplash.com/photo-1494790778202-cad84cf45f1d?w=400&h=600&fit=crop",
+    "/2.jpg",
+    "/3.jpg",
+    "/4.jpg",
   ];
 
   const column2Images = [
-    "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&h=600&fit=crop",
-    "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=400&h=600&fit=crop",
-    "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=400&h=600&fit=crop",
-    "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=400&h=600&fit=crop",
+    "/5.jpg",
+    "/6.jpg",
+    "/7.avif",
+    "/8.avif",
     "https://images.unsplash.com/photo-1530785602389-07594beb8b73?w=400&h=600&fit=crop",
   ];
 
   const column3Images = [
-    "https://images.unsplash.com/photo-1488161628813-04466f872be2?w=400&h=600&fit=crop",
-    "https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?w=400&h=600&fit=crop",
-    "https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=400&h=600&fit=crop",
-    "https://images.unsplash.com/photo-1521119989659-a83eee488004?w=400&h=600&fit=crop",
+    "/9.avif",
+    "/10.jpg",
+    "/11.jpg",
+    "/12.jpg",
     "https://images.unsplash.com/photo-1499209974431-9dddcece7f88?w=400&h=600&fit=crop",
   ];
 
@@ -104,7 +106,7 @@ const Home = () => {
       excerpt: "A historic altar call at the Men's Conference",
       likes: 227,
       image:
-        "https://images.unsplash.com/photo-1540569014015-19a7be504e3a?w=600",
+        "/poeple.jpg",
     },
     {
       title: "The Transformative Power of Mentorship",
@@ -118,7 +120,7 @@ const Home = () => {
       excerpt: "Priscillah Amanda Chirenda's Journey",
       likes: 94,
       image:
-        "https://images.unsplash.com/photo-1438032005730-c779502df39b?w=600",
+        "/36.jpg",
     },
   ];
 
@@ -202,7 +204,7 @@ const Home = () => {
         </div>
 
         {/* Dark Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-purple-950/95 via-purple-950/85 to-purple-950/95" />
+        <div className="absolute inset-0 bg-gradient-to-b from-purple-950/75 via-purple-950/65 to-purple-950/75" />
 
         {/* Animated Grid Overlay */}
         <div className="absolute inset-0 opacity-5">
@@ -427,7 +429,7 @@ const Home = () => {
                         className="relative w-72 h-40 rounded-2xl overflow-hidden group cursor-pointer flex-shrink-0 shadow-2xl"
                       >
                         {/* Background Image */}
-                        <img
+                        <LazyImage
                           src={event.image}
                           alt={event.title}
                           className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"

@@ -3,11 +3,13 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Image as ImageIcon, X, ZoomIn, Download, 
   Heart, Share2, Calendar, MapPin, Filter,
-  ChevronLeft, ChevronRight, Maximize2
+  ChevronLeft, ChevronRight, Music, Mic, Star,
+  Users, Camera, Award, TrendingUp, Sparkles
 } from 'lucide-react';
 import { useLanguage } from '../LunguageContext';
 import { RiGalleryView2 } from "react-icons/ri";
 import { TiHeartOutline } from "react-icons/ti";
+import LazyImage from '../utils/imageLoader.jsx';
 
 const Gallery = () => {
   const { t } = useLanguage();
@@ -16,12 +18,12 @@ const Gallery = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const categories = [
-    { id: 'all', name: 'All Memories', icon: '📸' },
-    { id: 'worship', name: 'Worship', icon: '🎵' },
-    { id: 'conferences', name: 'Conferences', icon: '🎤' },
-    { id: 'youth', name: 'Youth Events', icon: '🌟' },
-    { id: 'outreach', name: 'Outreach', icon: '❤️' },
-    { id: 'fellowship', name: 'Fellowship', icon: '🤝' },
+    { id: 'all', name: 'All Memories', icon: Camera },
+    { id: 'worship', name: 'Worship', icon: Music },
+    { id: 'conferences', name: 'Conferences', icon: Mic },
+    { id: 'youth', name: 'Youth Events', icon: Star },
+    { id: 'outreach', name: 'Outreach', icon: Heart },
+    { id: 'fellowship', name: 'Fellowship', icon: Users },
   ];
 
   const gallery = [
@@ -31,9 +33,10 @@ const Gallery = () => {
       category: 'conferences',
       date: '2024-11-15',
       location: 'UFIC Main Auditorium',
-      image: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800',
+      image: '/1.jpg',
       likes: 234,
       description: 'Powerful moments from our annual youth conference',
+      theme: 'from-blue-600/80 via-blue-500/70 to-cyan-600/80',
     },
     {
       id: 2,
@@ -41,9 +44,10 @@ const Gallery = () => {
       category: 'worship',
       date: '2024-11-08',
       location: 'UFIC Worship Center',
-      image: 'https://images.unsplash.com/photo-1510915361894-db8b60106cb1?w=800',
+      image: '/2.jpg',
       likes: 189,
       description: 'Heaven touching earth through worship',
+      theme: 'from-purple-600/80 via-pink-500/70 to-purple-700/80',
     },
     {
       id: 3,
@@ -51,9 +55,10 @@ const Gallery = () => {
       category: 'outreach',
       date: '2024-10-25',
       location: 'Mbare Community',
-      image: 'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=800',
+      image: '/3.jpg',
       likes: 156,
       description: 'Serving our community with love',
+      theme: 'from-rose-600/80 via-red-500/70 to-rose-700/80',
     },
     {
       id: 4,
@@ -61,9 +66,10 @@ const Gallery = () => {
       category: 'fellowship',
       date: '2024-11-20',
       location: 'UFIC Youth Center',
-      image: 'https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=800',
+      image: '/4.jpg',
       likes: 198,
       description: 'Building lasting friendships in Christ',
+      theme: 'from-teal-600/80 via-emerald-500/70 to-teal-700/80',
     },
     {
       id: 5,
@@ -71,9 +77,10 @@ const Gallery = () => {
       category: 'worship',
       date: '2024-11-01',
       location: 'UFIC Main Church',
-      image: 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=800',
+      image: '/5.jpg',
       likes: 267,
       description: 'Lifting high the name of Jesus',
+      theme: 'from-indigo-600/80 via-violet-500/70 to-indigo-700/80',
     },
     {
       id: 6,
@@ -81,9 +88,10 @@ const Gallery = () => {
       category: 'youth',
       date: '2024-10-18',
       location: 'UFIC Retreat Center',
-      image: 'https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=800',
+      image: '/6.jpg',
       likes: 223,
       description: 'Life-changing encounters with God',
+      theme: 'from-orange-600/80 via-amber-500/70 to-orange-700/80',
     },
     {
       id: 7,
@@ -91,9 +99,10 @@ const Gallery = () => {
       category: 'conferences',
       date: '2024-10-10',
       location: 'UFIC Conference Hall',
-      image: 'https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=800',
+      image: '/7.avif',
       likes: 145,
       description: 'Equipping the next generation',
+      theme: 'from-sky-600/80 via-blue-500/70 to-sky-700/80',
     },
     {
       id: 8,
@@ -101,9 +110,10 @@ const Gallery = () => {
       category: 'outreach',
       date: '2024-09-28',
       location: 'Harare CBD',
-      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800',
+      image: '/8.avif',
       likes: 178,
       description: 'Taking the Gospel to the streets',
+      theme: 'from-fuchsia-600/80 via-pink-500/70 to-fuchsia-700/80',
     },
     {
       id: 9,
@@ -111,9 +121,10 @@ const Gallery = () => {
       category: 'worship',
       date: '2024-11-22',
       location: 'UFIC Worship Center',
-      image: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=800',
+      image: '/9.avif',
       likes: 156,
       description: 'Preparing for excellence in worship',
+      theme: 'from-green-600/80 via-lime-500/70 to-green-700/80',
     },
     {
       id: 10,
@@ -121,9 +132,10 @@ const Gallery = () => {
       category: 'youth',
       date: '2024-10-05',
       location: 'UFIC Prayer Mountain',
-      image: 'https://images.unsplash.com/photo-1438032005730-c779502df39b?w=800',
+      image: '/10.jpg',
       likes: 289,
       description: 'Seeking God together',
+      theme: 'from-red-600/80 via-orange-500/70 to-red-700/80',
     },
     {
       id: 11,
@@ -131,9 +143,10 @@ const Gallery = () => {
       category: 'fellowship',
       date: '2024-09-15',
       location: 'UFIC Grounds',
-      image: 'https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=800',
+      image: '/11.jpg',
       likes: 234,
       description: 'Fellowship and fun for all ages',
+      theme: 'from-cyan-600/80 via-teal-500/70 to-cyan-700/80',
     },
     {
       id: 12,
@@ -141,9 +154,10 @@ const Gallery = () => {
       category: 'worship',
       date: '2024-11-24',
       location: 'UFIC Main Auditorium',
-      image: 'https://images.unsplash.com/photo-1519167758481-83f29da8a592?w=800',
+      image: '/12.jpg',
       likes: 312,
       description: 'Grateful hearts giving thanks',
+      theme: 'from-amber-600/80 via-yellow-500/70 to-amber-700/80',
     },
   ];
 
@@ -187,11 +201,7 @@ const Gallery = () => {
       <section className="relative py-32 px-4 sm:px-6 lg:px-8 overflow-hidden -mt-20">
         {/* Background Image */}
         <div className="absolute inset-0 -top-20">
-          <img
-            src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=1920&h=1080&fit=crop"
-            alt="Gallery"
-            className="w-full h-full object-cover"
-          />
+          <LazyImage src="/23.png" alt="Gallery" className="w-full h-full object-cover" />
         </div>
         
         {/* Gradient Overlay */}
@@ -233,7 +243,7 @@ const Gallery = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
-              className="inline-flex items-center gap-2 px-6 py-3 bg-pink-500/20 rounded-full border border-pink-400/30"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-pink-500/20 backdrop-blur-md rounded-full border border-pink-400/30"
             >
               <Heart className="w-5 h-5 text-pink-400" />
               <span className="text-pink-400 font-medium">{gallery.length} Beautiful Memories</span>
@@ -249,91 +259,107 @@ const Gallery = () => {
             <Filter className="w-5 h-5" />
             <span className="font-medium">Filter:</span>
           </div>
-          {categories.map((category) => (
-            <motion.button
-              key={category.id}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => setSelectedCategory(category.id)}
-              className={`px-6 py-3 rounded-full font-bold transition-all duration-300 flex items-center gap-2 ${
-                selectedCategory === category.id
-                  ? 'bg-gradient-to-r from-amber-500 to-amber-600 text-purple-950 shadow-xl shadow-amber-500/50'
-                  : 'bg-purple-800/50 text-purple-200 hover:bg-purple-800/70 border border-purple-700/30'
-              }`}
-            >
-              <span>{category.icon}</span>
-              {category.name}
-            </motion.button>
-          ))}
+          {categories.map((category) => {
+            const IconComponent = category.icon;
+            return (
+              <motion.button
+                key={category.id}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => setSelectedCategory(category.id)}
+                className={`px-6 py-3 rounded-full font-bold transition-all duration-300 flex items-center gap-2 ${
+                  selectedCategory === category.id
+                    ? 'bg-gradient-to-r from-amber-500 to-amber-600 text-purple-950 shadow-xl shadow-amber-500/50'
+                    : 'bg-purple-800/30 backdrop-blur-md text-purple-200 hover:bg-purple-800/50 border border-purple-700/30'
+                }`}
+              >
+                <IconComponent className="w-4 h-4" />
+                {category.name}
+              </motion.button>
+            );
+          })}
         </div>
       </section>
 
       {/* Masonry Gallery */}
       <section className="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <div className="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6">
-          {filteredGallery.map((item, index) => (
-            <motion.div
-              key={item.id}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.05 }}
-              whileHover={{ y: -10 }}
-              className="break-inside-avoid group cursor-pointer"
-              onClick={() => openLightbox(item, index)}
-            >
-              <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-purple-900/50 to-purple-950/50 backdrop-blur-xl border border-purple-700/30 shadow-2xl">
-                {/* Image */}
-                <div className="relative overflow-hidden">
-                  <motion.img
-                    whileHover={{ scale: 1.1 }}
-                    transition={{ duration: 0.6 }}
-                    src={item.image}
-                    alt={item.title}
-                    className="w-full h-auto object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-purple-950 via-purple-950/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  
-                  {/* Hover Overlay */}
-                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <motion.div
-                      whileHover={{ scale: 1.1 }}
-                      className="w-16 h-16 bg-amber-500 rounded-full flex items-center justify-center"
-                    >
-                      <ZoomIn className="w-8 h-8 text-purple-950" />
-                    </motion.div>
-                  </div>
+          {filteredGallery.map((item, index) => {
+            const CategoryIcon = categories.find(c => c.id === item.category)?.icon;
+            return (
+              <motion.div
+                key={item.id}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.05 }}
+                whileHover={{ y: -10 }}
+                className="break-inside-avoid group cursor-pointer"
+                onClick={() => openLightbox(item, index)}
+              >
+                <div className="relative overflow-hidden rounded-2xl shadow-2xl">
+                  {/* Full Background Image */}
+                  <div className="relative overflow-hidden">
+                    <motion.img
+                      whileHover={{ scale: 1.05 }}
+                      transition={{ duration: 0.6 }}
+                      src={item.image}
+                      alt={item.title}
+                      className="w-full h-auto object-cover"
+                    />
+                    
+                    {/* Colored Gradient Overlay - Always Visible */}
+                    <div className={`absolute inset-0 bg-gradient-to-br ${item.theme} backdrop-blur-[2px]`} />
+                    
+                    {/* Glassmorphic Content Container */}
+                    <div className="absolute inset-0 flex flex-col justify-end p-5">
+                      {/* Category Badge - Top */}
+                      <div className="absolute top-4 left-4">
+                        <div className="px-4 py-2 bg-white/20 backdrop-blur-md rounded-full border border-white/30 shadow-lg">
+                          <div className="flex items-center gap-2">
+                            {CategoryIcon && <CategoryIcon className="w-4 h-4 text-white" />}
+                            <span className="text-white text-xs font-bold uppercase tracking-wide">
+                              {categories.find(c => c.id === item.category)?.name}
+                            </span>
+                          </div>
+                        </div>
+                      </div>
 
-                  {/* Category Badge */}
-                  <div className="absolute top-3 left-3 px-3 py-1 bg-purple-950/90 backdrop-blur-sm rounded-full">
-                    <span className="text-amber-400 text-xs font-bold uppercase">
-                      {categories.find(c => c.id === item.category)?.icon} {categories.find(c => c.id === item.category)?.name}
-                    </span>
+                      {/* Zoom Icon - Appears on Hover */}
+                      <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <motion.div
+                          whileHover={{ scale: 1.1 }}
+                          className="w-16 h-16 bg-white/30 backdrop-blur-md rounded-full flex items-center justify-center border border-white/40 shadow-2xl"
+                        >
+                          <ZoomIn className="w-8 h-8 text-white" />
+                        </motion.div>
+                      </div>
+
+                      {/* Content - Bottom with Glassmorphism */}
+                      <div className="relative bg-white/10 backdrop-blur-xl rounded-2xl p-5 border border-white/20 shadow-2xl">
+                        <h3 className="text-white font-bold text-lg mb-2 group-hover:text-white transition-colors drop-shadow-lg">
+                          {item.title}
+                        </h3>
+                        <p className="text-white/90 text-sm mb-3 drop-shadow-md">
+                          {item.description}
+                        </p>
+                        <div className="flex items-center justify-between text-sm">
+                          <div className="flex items-center gap-1.5 text-white/90">
+                            <Calendar className="w-4 h-4" />
+                            <span className="font-medium">{formatDate(item.date)}</span>
+                          </div>
+                          <div className="flex items-center gap-1.5 text-white/90">
+                            <Heart className="w-4 h-4 fill-white/50" />
+                            <span className="font-medium">{item.likes}</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
-
-                {/* Info */}
-                <div className="p-4">
-                  <h3 className="text-white font-bold text-lg mb-2 group-hover:text-amber-400 transition-colors">
-                    {item.title}
-                  </h3>
-                  <p className="text-purple-300 text-sm mb-3">
-                    {item.description}
-                  </p>
-                  <div className="flex items-center justify-between text-sm">
-                    <div className="flex items-center gap-1 text-purple-400">
-                      <Calendar className="w-3 h-3" />
-                      <span>{formatDate(item.date)}</span>
-                    </div>
-                    <div className="flex items-center gap-1 text-pink-400">
-                      <TiHeartOutline className="w-3 h-3" />
-                      <span>{item.likes}</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          ))}
+              </motion.div>
+            );
+          })}
         </div>
       </section>
 
@@ -397,7 +423,7 @@ const Gallery = () => {
                 whileTap={{ scale: 0.9 }}
                 className="w-10 h-10 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center text-pink-400 hover:bg-white/20 transition-all"
               >
-                <TiHeartOutline className="w-5 h-5" />
+                <Heart className="w-5 h-5" />
               </motion.button>
             </div>
 
@@ -433,7 +459,7 @@ const Gallery = () => {
                     <span>{selectedImage.location}</span>
                   </div>
                   <div className="flex items-center gap-2 text-pink-400">
-                    <TiHeartOutline className="w-4 h-4" />
+                    <Heart className="w-4 h-4" />
                     <span>{selectedImage.likes} Likes</span>
                   </div>
                 </div>
@@ -450,34 +476,177 @@ const Gallery = () => {
         )}
       </AnimatePresence>
 
-      {/* Stats Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-transparent to-purple-950/50">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+      {/* Enhanced Stats Section */}
+      <section className="py-32 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute inset-0" style={{
+            backgroundImage: `radial-gradient(circle at 2px 2px, white 1px, transparent 0)`,
+            backgroundSize: '40px 40px'
+          }} />
+        </div>
+
+        {/* Gradient Background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-purple-950/80 via-purple-900/60 to-purple-950/80" />
+
+        {/* Animated Orbs */}
+        <motion.div
+          animate={{
+            x: [0, 100, 0],
+            y: [0, -100, 0],
+            scale: [1, 1.2, 1],
+          }}
+          transition={{ duration: 20, repeat: Infinity }}
+          className="absolute top-20 left-20 w-96 h-96 bg-amber-500/20 rounded-full blur-3xl"
+        />
+        <motion.div
+          animate={{
+            x: [0, -100, 0],
+            y: [0, 100, 0],
+            scale: [1, 1.3, 1],
+          }}
+          transition={{ duration: 25, repeat: Infinity }}
+          className="absolute bottom-20 right-20 w-96 h-96 bg-pink-500/20 rounded-full blur-3xl"
+        />
+
+        <div className="relative z-10 max-w-7xl mx-auto">
+          {/* Section Header */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <motion.div
+              animate={{ rotate: [0, 360] }}
+              transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+              className="inline-block mb-6"
+            >
+              <Sparkles className="w-16 h-16 text-amber-400" />
+            </motion.div>
+            <h2 className="text-4xl sm:text-5xl font-black text-white mb-4">
+              Our Impact in
+              <span className="text-amber-400"> Numbers</span>
+            </h2>
+            <p className="text-purple-300 text-lg max-w-2xl mx-auto">
+              Every photo tells a story of faith, hope, and transformation
+            </p>
+          </motion.div>
+
+          {/* Stats Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
-              { number: '1000+', label: 'Photos Captured', icon: '📸' },
-              { number: '50+', label: 'Events Documented', icon: '🎉' },
-              { number: '5000+', label: 'Lives Touched', icon: '❤️' },
-              { number: '10+', label: 'Years of Memories', icon: '⭐' },
-            ].map((stat, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="text-center p-8 bg-gradient-to-br from-purple-900/50 to-purple-950/50 backdrop-blur-xl rounded-2xl border border-purple-700/30"
-              >
-                <div className="text-5xl mb-4">{stat.icon}</div>
-                <div className="text-4xl font-black text-amber-400 mb-2">
-                  {stat.number}
-                </div>
-                <div className="text-purple-300 font-medium">
-                  {stat.label}
-                </div>
-              </motion.div>
-            ))}
+              { 
+                number: '1000+', 
+                label: 'Photos Captured', 
+                icon: Camera,
+                color: 'from-blue-500 to-cyan-500',
+                bgColor: 'from-blue-500/10 to-cyan-500/10'
+              },
+              { 
+                number: '50+', 
+                label: 'Events Documented', 
+                icon: Calendar,
+                color: 'from-purple-500 to-pink-500',
+                bgColor: 'from-purple-500/10 to-pink-500/10'
+              },
+              { 
+                number: '5000+', 
+                label: 'Lives Touched', 
+                icon: Heart,
+                color: 'from-rose-500 to-red-500',
+                bgColor: 'from-rose-500/10 to-red-500/10'
+              },
+              { 
+                number: '10+', 
+                label: 'Years of Memories', 
+                icon: Award,
+                color: 'from-amber-500 to-orange-500',
+                bgColor: 'from-amber-500/10 to-orange-500/10'
+              },
+            ].map((stat, index) => {
+              const IconComponent = stat.icon;
+              return (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  whileHover={{ y: -10, scale: 1.05 }}
+                  className="relative group"
+                >
+                  {/* Card */}
+                  <div className="relative h-full p-8 bg-white/5 backdrop-blur-xl rounded-3xl border border-white/10 shadow-2xl overflow-hidden">
+                    {/* Gradient Background on Hover */}
+                    <div className={`absolute inset-0 bg-gradient-to-br ${stat.bgColor} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
+                    
+                    {/* Content */}
+                    <div className="relative z-10 text-center">
+                      {/* Icon */}
+                      <motion.div
+                        whileHover={{ rotate: 360, scale: 1.2 }}
+                        transition={{ duration: 0.6 }}
+                        className={`inline-flex items-center justify-center w-16 h-16 mb-6 bg-gradient-to-br ${stat.color} rounded-2xl shadow-lg`}
+                      >
+                        <IconComponent className="w-8 h-8 text-white" />
+                      </motion.div>
+
+                      {/* Number */}
+                      <motion.div
+                        initial={{ scale: 1 }}
+                        whileInView={{ scale: [1, 1.1, 1] }}
+                        transition={{ duration: 0.5 }}
+                        className={`text-5xl font-black bg-gradient-to-r ${stat.color} bg-clip-text text-transparent mb-3`}
+                      >
+                        {stat.number}
+                      </motion.div>
+
+                      {/* Label */}
+                      <div className="text-purple-300 font-semibold text-lg">
+                        {stat.label}
+                      </div>
+
+                      {/* Trend Indicator */}
+                      <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.3 }}
+                        className="flex items-center justify-center gap-1 mt-3 text-emerald-400 text-sm"
+                      >
+                        <TrendingUp className="w-4 h-4" />
+                        <span className="font-medium">Growing</span>
+                      </motion.div>
+                    </div>
+
+                    {/* Decorative Corner Elements */}
+                    <div className={`absolute top-0 right-0 w-20 h-20 bg-gradient-to-br ${stat.color} opacity-10 rounded-bl-full`} />
+                    <div className={`absolute bottom-0 left-0 w-20 h-20 bg-gradient-to-tr ${stat.color} opacity-10 rounded-tr-full`} />
+                  </div>
+                </motion.div>
+              );
+            })}
           </div>
+
+          {/* Additional Info */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.6 }}
+            className="mt-16 text-center"
+          >
+            <div className="inline-flex items-center gap-3 px-8 py-4 bg-white/5 backdrop-blur-xl rounded-full border border-white/10">
+              <div className="flex -space-x-2">
+                {[1, 2, 3, 4].map((i) => (
+                  <div key={i} className="w-8 h-8 rounded-full bg-gradient-to-br from-amber-500 to-orange-500 border-2 border-purple-950" />
+                ))}
+              </div>
+              <span className="text-purple-300 font-medium">
+                Join thousands capturing faith moments
+              </span>
+            </div>
+          </motion.div>
         </div>
       </section>
 

@@ -12,6 +12,7 @@ import { GiWorld } from "react-icons/gi";
 import { PiPersonSimpleThrowBold } from "react-icons/pi";
 import { WiSunrise } from "react-icons/wi";
 import { WiDayLightWind } from "react-icons/wi";
+import LazyImage from "../utils/imageLoader.jsx";
 
 
 const Awaken = () => {
@@ -60,11 +61,7 @@ const Awaken = () => {
       <section className="relative py-32 px-4 sm:px-6 lg:px-8 overflow-hidden -mt-20">
         {/* Background Image */}
         <div className="absolute inset-0 -top-20">
-          <img
-            src="https://images.unsplash.com/photo-1507692049790-de58290a4334?w=1920&h=1080&fit=crop"
-            alt="Prayer"
-            className="w-full h-full object-cover"
-          />
+          <LazyImage src="/20.jpg" alt="Prayer" className="w-full h-full object-cover" />
         </div>
         
         {/* Gradient Overlay */}
